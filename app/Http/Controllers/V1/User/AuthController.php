@@ -74,6 +74,14 @@ class AuthController extends Controller
                 ]
             )
             ->setStatusCode(Response::HTTP_OK);
+        } else {
+            $response = response()->json(
+                [
+                    'status' => 'failed',
+                    'message' => 'Email or Password incorrect'
+                ]
+            )
+            ->setStatusCode(Response::HTTP_FORBIDDEN);
         }
 
         return $response->header('Accept', 'application/json');
